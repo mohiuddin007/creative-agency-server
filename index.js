@@ -43,14 +43,14 @@ client.connect(err => {
         };
 
         servicesCollection.insertOne({title, description, image})
-        .then(res => {
+        .then(result => {
           // fs.remove(filePath, error =>{
           //   if(error){
           //     console.log(error);
           //     result.status(500).send({msg: 'Failed to upload service image'})
               
           //   }
-            result.send(result.insertedCount > 0)
+            res.send(result.insertedCount > 0);
           // })
         })
         
