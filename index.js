@@ -26,15 +26,8 @@ client.connect(err => {
       const file = req.files.file;
       const title = req.body.title;
       const description = req.body.description;
-      // const filePath = `${__dirname}/services/${file.name}`;
-
-      // file.mv(filePath, err =>{
-      //   if(err){
-      //     console.log(err);
-      //    res.status(500).send({msg: 'Failed to upload service image'})
-      //   }
-        const newImage = file.data;
-        const encImage = newImage.toString('base64');
+       const newImage = file.data;
+       const encImage = newImage.toString('base64');
         
         var image = {
           contentType: file.mimetype,
@@ -44,17 +37,8 @@ client.connect(err => {
 
         servicesCollection.insertOne({title, description, image})
         .then(result => {
-          // fs.remove(filePath, error =>{
-          //   if(error){
-          //     console.log(error);
-          //     result.status(500).send({msg: 'Failed to upload service image'})
-              
-          //   }
             res.send(result.insertedCount > 0);
-          // })
         })
-        
-     // })
    })
 
 
